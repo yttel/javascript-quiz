@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- Quiz page -->
+<!-- written by/for Letty Bedard -->
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Coding Quiz by Letty Bedard">
+    <meta name="author" content="Letty Bedard">
+    <meta name="keywords" content="coding quiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    
+    <title>QUIZ TIME</title>
+
+  </head>
+  <body>
+
+    <div class="mainPanel m-0"> <!--main content panel-->
+      <div class="container"> <!--container-->
+
+        <div class="row">
+
+          <div class="col-lg-2">
+            <!--placeholder for spacing on larger pages -->
+          </div>  
+
+          <div class="col-md-12 col-lg-8">
+            <div class="panelContent">
+
+              <h2 class="sectionContent centerText">Password Generator</h2>
+      
+              <hr class="dividerLine">
+
+                <div class="row m-0" id="allTheThings">
+                  <div class="mx-0 col-sm-3">
+                    <!-- placeholder for space before results are in -->
+                  </div>
+                  
+                  <div class="contentBox mx-0 col-sm-6" id="inputBox"> <!--input pane-->
+                    
+                    <form class="fullWidth">
+                      
+                      <div class="form-group row">
+                          <label class="col-sm-12 col-md-12 col-form-label centerText">
+                            Desired Length (8-128):
+                          </label>
+      
+                          <div class="col-sm-12 col-md-12">
+                            <input type="number" class="form-control" id="passwordLength" min="8" max="128" placeholder="">
+                          </div>
+                      </div>
+      
+                      <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" data-charString="lowerCase">
+                          <label class="form-check-label" for="lowerCaseCheck">
+                            Lower case letters
+                          </label>
+                      </div>
+      
+                      <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" data-charString="upperCase">
+                          <label class="form-check-label" for="upperCaseCheck">
+                            Upper case letters
+                          </label>
+                      </div>
+      
+                      <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" data-charString="numerals">
+                          <label class="form-check-label" for="numeralCheck">
+                            Numbers
+                          </label>
+                      </div>
+      
+                      <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" data-charString="lowerCase">
+                          <label class="form-check-label" for="specialCharsCheck">
+                            Special characters
+                          </label>
+                      </div>
+      
+                      <div class="instructions text-center" id="instructions">
+                          Select at least one type.
+                      </div>
+      
+                      <button class="myButton text-center" id="generate" type="button"> <!--only works if at least one type is checked-->
+                        Generate
+                      </button>
+                    </form>
+                    
+                  </div> <!--form and button pane-->
+
+                  <div class="mx-0 col-sm-3">
+                    <div class="isHiding" id="resultsPane">
+                      <div class="contentBox"> <!--output-->
+                  
+                        <form class="fullWidth" id="results">
+                        
+                          <!-- text box to dump password with copy button, check bootstrap?-->
+        
+                          <textarea
+                          readonly
+                          class="fullWidth d-block form-control"
+                          id="newPassword"
+                          placeholder=""
+                          rows="8"
+                          ></textarea>
+                          
+                          <button class="myButton" id="copy"> 
+                            Copy
+                          </button>
+                          <button class="myButton">
+                            Reset
+                          </button>
+                        </form>
+                      
+                      </div> <!--password and copy button-->
+  
+                    </div> <!--results pane-->
+                  </div>
+                </div> <!--row-->
+
+            </div>  <!--content area-->
+          </div>
+          
+          <div class="col-lg-2">
+            <!--placeholder for spacing on larger pages -->
+          </div>        
+          
+        </div> <!--row-->
+      </div> <!--container-->
+    </div> <!--main panel-->
+
+    <footer class="footer footerStyle">
+
+      <div class="container footerText">
+        Copyright &copy; 2020
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+  </body>
+
+</html>
+

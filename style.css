@@ -1,0 +1,95 @@
+/* css for quiz
+written by Letty Bedard */
+
+
+body{
+  font-family: 'Arial', 'Helvetica Nue', Helvetica, sans-serif;
+  color: #777777;
+  margin-top: 30px;
+  background-image: url("cork-board.png");
+}
+
+.centerText{
+  text-align: center;
+}
+
+div.mainPanel{
+  display: flex;
+  justify-content: center;
+}
+
+div.panelContent{
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+h2.sectionContent{
+  font-family:'Georgia', 'Times New Roman', Times, serif;
+  color: #4aaaa5;
+  margin: 20px;
+}
+
+hr.dividerLine{
+  background-color: #cccccc;
+  height: 1px;
+  border: none;
+  padding: 0;
+  margin: 0px 20px; 
+}
+
+div.contentBox{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+div.instructions{
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.warn{
+  color: red;
+}
+
+.isHiding{
+  display: none;
+}
+
+#resultsPane{
+  margin-top: 35px;
+}
+
+form.fullWidth{
+  width: 100%;
+}
+
+button.myButton{
+  background-color: #4aaaa5;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 20px;
+}
+
+footer.footerStyle{
+  background-color: #666666;
+  height: 40px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 3px solid #4aaaa5;
+}     
+
+div.footerText{
+  color: #ffffff;
+  padding-top: 10px;
+}
