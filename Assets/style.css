@@ -6,7 +6,7 @@ body{
   font-family: 'Arial', 'Helvetica Nue', Helvetica, sans-serif;
   color: #777777;
   margin-top: 30px;
-  background-image: url("cork-board.png");
+  background-image: url("./Images/cork-board.png");
 }
 
 .noMargin{

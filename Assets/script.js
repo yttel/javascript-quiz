@@ -103,9 +103,11 @@ $(document).ready(function(){
     let scores = localStorage.getItem("hiScoreList");
     // render the list of high scores
     if (scores) { //there is a hs list
+      scores = JSON.parse(scores);
       for (let i=0; i < scores.length; i++){
-       let nextScore = $("<li>").text(`${scores[i].score}   ${scores[i].name}`);
-       console.log(nextScore);
+       let nextScore = $("<p>");
+       console.log(scores[i]);
+       nextScore.text(`${scores[i].score}     ${scores[i].name}`);
        scoreList.append(nextScore);
       } 
     }
@@ -121,13 +123,15 @@ $(document).ready(function(){
 
   function addHighScore(num, init){
     let scores = localStorage.getItem("hiScoreList");
+    console.log(`scores: ${scores}`);
     if (scores === null){
       scores = [];
     }
     else {
-      scores = scores.parse();
+      scores = JSON.parse(scores);
     }
     console.log(`scores: ${scores}`);
+    console.log(typeof scores);
     
     scores.unshift({
       score: num, 
@@ -138,7 +142,7 @@ $(document).ready(function(){
     
     //sort scores highest to lowest
 
-    localStorage.setItem("hiScoreList", scores);
+    localStorage.setItem("hiScoreList", JSON.stringify(scores));
     console.log("check local storage score list");
   }
 
