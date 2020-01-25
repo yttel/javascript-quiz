@@ -23,7 +23,7 @@
   </head>
   <body>
 
-    <div class="mainPanel noMargin"> <!--main content panel-->
+    <div class="mainPanel m-0"> <!--main content panel-->
       <div class="container"> <!--container-->
 
         <div class="row">
@@ -47,45 +47,49 @@
 
               <hr class="dividerLine">
 
-                <div class="row noMargin" id="allTheThings">
-                  <div class="col-sm-3 noMargin">
+                <div class="row mx-0" id="allTheThings">
+                  <div class="col-sm-3 mx-0">
                     <!-- placeholder for space on left -->
                   </div>
                   
-                  <div class="contentBox col-sm-6 noMargin" id="middlePart"> <!--where the meat goes, swap out what's showing-->
+                  <div class="contentBox col-sm-6 mx-0" id="middlePart"> <!--where the meat goes, swap out what's showing-->
                     
-                    <div class="instructions text-center" id="instructionPane"> <!--holds inst and start button-->
-                      Game Instructions, etc.
+                    <div class="instructions text-center" id="instructionPane"> <!--holds instr and start button-->
+                      Take a this coding quiz to see how you stack up on JavaScript basics. You will have 75 seconds to answer these five questions. Each incorrect answer will deduct 10 seconds. Whatever time is left when you answer all the questions is your score - good luck!
                       
+                      <br>
+
                       <button class="myButton text-center" id="start" type="button"> <!--makes the quiz start-->
                         Start Quiz
                       </button>
                     </div>
                     
-                    <div id="quizSection" class = "isHidden"> <!--holds the quiz-->
-
-                      <div id="quizPane">
-
-                      </div>
-
-                      <div id="resultText">
-
-                      </div>
-
+                    <div id="quizSection" class="isHidden"> <!--holds the quiz-->
+                      <div id="quizPane"></div>
+                      <div id="resultText"></div>
                     </div>
 
-                    
+                    <div id="gameDone" class="isHidden">
+                      GAME OVER: Your score is <span id="endScore"></span>
+                      Enter your name or initials for the high score list: 
+                      <br>
+                      <input type="text" placeholder="your name/initials here" id="init">
 
+                      <button class="myButton text-center" id="add" type="button"> <!--makes the quiz start-->
+                        Add
+                      </button>
+                    </div>
+                    
                     <div id="hiScorePane" class="isHidden"> 
                       <ul id="scoreList"> <!--scores go here-->
 
                       </ul>
 
-                      <button class="myButton text-center" id="play" type="button"> <!--brings to instructions-->
+                      <button class="myButton text-center float-left" id="play" type="button"> <!--brings to instructions-->
                         Play Game
                       </button>
                       
-                      <button class="myButton text-center" id="reset" type="button"> <!--clears the high scores-->
+                      <button class="myButton text-center float-right" id="reset" type="button"> <!--clears the high scores-->
                         Reset High Scores
                       </button>
                     
