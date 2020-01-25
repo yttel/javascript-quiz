@@ -133,6 +133,10 @@ $(document).ready(function(){
     console.log(`scores: ${scores}`);
     console.log(typeof scores);
     
+    if (num < 0){
+      num = 0;
+    }
+
     scores.unshift({
       score: num, 
       name: init
