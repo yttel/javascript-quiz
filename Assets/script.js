@@ -104,6 +104,11 @@ $(document).ready(function(){
     // render the list of high scores
     if (scores) { //there is a hs list
       scores = JSON.parse(scores);
+
+      // sort scores highest to lowest
+      scores.sort((a, b) => (b.score - a.score));
+      // console.log(`scores after sort: ${scores}`);
+
       for (let i=0; i < scores.length; i++){
        let nextScore = $("<p>");
        console.log(scores[i]);
@@ -144,8 +149,6 @@ $(document).ready(function(){
 
     console.log(`scores: ${scores}`);
     
-    //sort scores highest to lowest
-
     localStorage.setItem("hiScoreList", JSON.stringify(scores));
     console.log("check local storage score list");
   }
@@ -177,7 +180,9 @@ $(document).ready(function(){
     let thisRoundQ = Array.from(questions);
     
     //shuffle questions
-    thisRoundQ.sort(function (){return (0.5-Math.random())});
+    thisRoundQ.sort(function (){
+      return (0.5-Math.random());
+    });
 
     top5Questions = thisRoundQ.splice(0, 5);
 
@@ -200,7 +205,9 @@ $(document).ready(function(){
       //console.log(answerOptions);
 
       // shuffle array
-      answerOptions.sort(function (){return (0.5-Math.random())});
+      answerOptions.sort(function (){
+        return (0.5-Math.random());
+      });
 
       answerOptions.forEach(function(thisAns){
         //console.log(`thisAns: ${thisAns}`)
