@@ -42,7 +42,7 @@ $(document).ready(function(){
   },{
     incorrectChoices: ["let ages = 3, 7, 8, 36, 37", "let ages = {3, 7, 8, 36, 37}", "let ages = (3, 7, 8, 36, 37)"],
     correctAnswer: "let ages = [3, 7, 8, 36, 37]",
-    questionText: "What is the correct way to write a JavaScript array?"
+    questionText: "Which is the correct way to write a JavaScript array?"
 
   }];
 
@@ -125,6 +125,7 @@ $(document).ready(function(){
   }
 
   function addHighScore(num, init){
+
     let scores = localStorage.getItem("hiScoreList");
     console.log(`scores: ${scores}`);
     if (scores === null){
@@ -232,7 +233,12 @@ $(document).ready(function(){
         }
         else { //wrong answer
           console.log("wrong");
-          timer.theTime -= 10;
+          if (timer.theTime > 10){
+            timer.theTime -= 10;
+          }
+          else {
+            timer.theTime = 0;
+          }
           ansText.css("color", "red")
                   .text("WRONG!")
                   .fadeTo("slow", 0);
@@ -254,14 +260,7 @@ $(document).ready(function(){
     showThis("#gameDone");
     // show game over, grab initials
     $("#endScore").text(timer.theTime)
-                  .css("font-weight", "bold");
-
-    $("#add").on("click", function (){
-      console.log(`init: ${initInput.val()}`);
-      addHighScore(timer.theTime, initInput.val());
-      showHighScores();
-    });
-    
+                  .css("font-weight", "bold"); 
   }
 
   function resetScores(){
@@ -276,6 +275,12 @@ $(document).ready(function(){
   $("#start").on("click", playTheGame);
   $("#play").on("click", showInstructions);
   $("#reset").on("click", resetScores);
+
+  $("#add").on("click", function (){
+    addHighScore(timer.theTime, initInput.val());
+    showHighScores();
+  });
+
 
 
 
