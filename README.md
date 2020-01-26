@@ -13,10 +13,7 @@ As you proceed in your career as a web developer, you will probably be asked to 
 
 ## Screenshots
 
-![Initial screen]()
+![Initial screen](./Assets/Images/quizInst.PNG)
 
-![During gameplay]()
+![During gameplay](./Assets/Images/quizQuest.PNG)
 
-![End of game screen]()
-
-![High score list]()

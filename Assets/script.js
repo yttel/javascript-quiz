@@ -68,16 +68,12 @@ $(document).ready(function(){
   }
 
   let instructions = $("#instructionPane"); 
-    
   let hiScores = $("#hiScorePane");
-    
   let quiz = $("#quizPane");
-
   let middlePart = $("#middlePart");
-
   let scoreList = $("#scoreList");
-
   let time = $("#timeLeft");
+  let initInput = $("#init");
 
   //  FUNCTIONS
 
@@ -117,7 +113,9 @@ $(document).ready(function(){
       } 
     }
     else { 
-      scoreList.append($("<li>").text("No scores yet, you should try!"));
+      scoreList.append($("<p>")
+              .addClass("text-center")
+              .text("No scores yet, you should try!"));
     }
   }
 
@@ -225,6 +223,7 @@ $(document).ready(function(){
                 .css("opacity", 100);
         
         //console.log($(this).attr("data-frog")==="true");        
+        //flashResult($(this).attr("data-frog")==="true");
         if ($(this).attr("data-frog")==="true"){ //correct answer
           console.log("right");
           ansText.css("color", "green")
@@ -243,6 +242,7 @@ $(document).ready(function(){
       });
     }
     else { // all questions were asked OR no time left
+      time.text(timer.theTime);
       quizDone();
     }
   }
@@ -250,14 +250,15 @@ $(document).ready(function(){
   function quizDone(){
     clearInterval(timeInterval);
     quiz.empty();
+    initInput.val(""); //clear prev init
     showThis("#gameDone");
     // show game over, grab initials
-    $("#endScore").text = timer.theTime;
+    $("#endScore").text(timer.theTime)
+                  .css("font-weight", "bold");
 
     $("#add").on("click", function (){
-      let initVal = $("#init").val();
-      console.log(`init: ${initVal}`);
-      addHighScore(timer.theTime, initVal);
+      console.log(`init: ${initInput.val()}`);
+      addHighScore(timer.theTime, initInput.val());
       showHighScores();
     });
     
