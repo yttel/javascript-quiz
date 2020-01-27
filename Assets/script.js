@@ -1,4 +1,5 @@
-//js for quiz assignment
+// js for quiz assignment
+// written by Letty Bedard
 
 $(document).ready(function(){
   
@@ -16,8 +17,8 @@ $(document).ready(function(){
     correctAnswer: "False.",
     questionText: "An external JavaScript file must contain the <script> tag."
   },{
-    incorrectChoices: ["function:myFunction()", "funciton = myFunction()"],
-    correctAnswer: "funciton myFunction()",
+    incorrectChoices: ["function:myFunction()", "function = myFunction()"],
+    correctAnswer: "function myFunction()",
     questionText: "How do you create a function in JavaScript?"
   },{
     incorrectChoices: ["if i = 5", "if i == 5 then", "if i = 5 then"],
@@ -43,9 +44,9 @@ $(document).ready(function(){
     incorrectChoices: ["let ages = 3, 7, 8, 36, 37", "let ages = {3, 7, 8, 36, 37}", "let ages = (3, 7, 8, 36, 37)"],
     correctAnswer: "let ages = [3, 7, 8, 36, 37]",
     questionText: "Which is the correct way to write a JavaScript array?"
-
   }];
 
+  // The Timer
   let timeInterval;
 
   const timer = {
@@ -76,38 +77,37 @@ $(document).ready(function(){
   let initInput = $("#init");
 
   //  FUNCTIONS
-
-  function hideAll(){ //hides all the children of middlePart
+  function hideAll(){ 
     middlePart.children().each(function() {
-      //console.log(this);
-      //console.log(quiz);
-      //console.log($(this).hasClass("isHidden"));
       if(!($(this).hasClass("isHidden"))){
         $(this).addClass("isHidden");
       }
     });
   }
-
+  
   function showThis(sectionID){
     hideAll();
     $(sectionID).removeClass("isHidden");
   }
 
-  function showHighScores(){ //show high scores pane
+  function showInstructions(){ 
+    time.text("75");
+    showThis("#instructionPane");
+  }
+    
+  function showHighScores(){ 
     showThis("#hiScorePane");
     scoreList.empty();
     let scores = localStorage.getItem("hiScoreList");
-    // render the list of high scores
+ 
     if (scores) { //there is a hs list
       scores = JSON.parse(scores);
 
       // sort scores highest to lowest
       scores.sort((a, b) => (b.score - a.score));
-      // console.log(`scores after sort: ${scores}`);
 
       for (let i=0; i < scores.length; i++){
        let nextScore = $("<p>");
-       console.log(scores[i]);
        nextScore.text(`${scores[i].score}     ${scores[i].name}`);
        scoreList.append(nextScore);
       } 
@@ -115,30 +115,22 @@ $(document).ready(function(){
     else { 
       scoreList.append($("<p>")
               .addClass("text-center")
-              .text("No scores yet, you should try!"));
+              .text("No scores yet, you should give it a try!"));
     }
   }
 
-  function showInstructions(){ //shows the instruction pane
-    time.text("75");
-    showThis("#instructionPane");
-  }
-
   function addHighScore(num, init){
-
     let scores = localStorage.getItem("hiScoreList");
-    console.log(`scores: ${scores}`);
+
+    if (num < 0){
+      num = 0;
+    }
+
     if (scores === null){
       scores = [];
     }
     else {
       scores = JSON.parse(scores);
-    }
-    console.log(`scores: ${scores}`);
-    console.log(typeof scores);
-    
-    if (num < 0){
-      num = 0;
     }
 
     scores.unshift({
@@ -152,30 +144,30 @@ $(document).ready(function(){
     console.log("check local storage score list");
   }
 
-  function flashResult(ansBool){
-    let ansText = $("#resultText");
-    ansText.text("")
-            .css("opacity", 100);
+  // function flashResult(ansBool){
+  //   let ansText = $("#resultText");
+  //   ansText.text("")
+  //           .css("opacity", 100);
 
-    if (ansBool === "true"){ //correct answer
-      console.log("right");
-      ansText.css("color", "green")
-              .text("CORRECT!")
-              .fadeTo("slow", 0);
-    }
-    else { //wrong answer
-      console.log("wrong");
-      timer.theTime -= 10;
-      ansText.css("color", "red")
-              .text("WRONG!")
-              .fadeTo("slow", 0);
-    }
-  }
+  //   if (ansBool === "true"){ //correct answer
+  //     console.log("right");
+  //     ansText.css("color", "green")
+  //             .text("CORRECT!")
+  //             .fadeTo("slow", 0);
+  //   }
+  //   else { //wrong answer
+  //     console.log("wrong");
+  //     timer.theTime -= 10;
+  //     ansText.css("color", "red")
+  //             .text("WRONG!")
+  //             .fadeTo("slow", 0);
+  //   }
+  // }
 
   function playTheGame(){ //play the game
-    // pick 5 random questions from the array and display
     timer.theTime = 75;
     showThis("#quizSection");
+
     let thisRoundQ = Array.from(questions);
     
     //shuffle questions
@@ -184,9 +176,7 @@ $(document).ready(function(){
     });
 
     top5Questions = thisRoundQ.splice(0, 5);
-
     timer.start();
-
     askAQuestion(top5Questions);
   }
 
@@ -198,18 +188,15 @@ $(document).ready(function(){
                   .addClass("questText")
                  .text(singleQuest.questionText));
     
-      //console.log(singleQuest);
       let answerOptions = Array.from(singleQuest.incorrectChoices);
       answerOptions.push(singleQuest.correctAnswer);
-      //console.log(answerOptions);
 
-      // shuffle array
+      // shuffle array of answers
       answerOptions.sort(function (){
         return (0.5-Math.random());
       });
 
       answerOptions.forEach(function(thisAns){
-        //console.log(`thisAns: ${thisAns}`)
         quiz.append($("<li>")
                     .addClass("answerText fullWidth btn")
                     .text(thisAns)
@@ -217,14 +204,12 @@ $(document).ready(function(){
       });
   
       $("li").on("click", function(){ //one of the answers is clicked
-      //console.log($(this));
-      //flashResult($(this).attr("data-frog"));
         let ansText = $("#resultText");
         ansText.text("")
-                .css("opacity", 100);
-        
-        //console.log($(this).attr("data-frog")==="true");        
-        //flashResult($(this).attr("data-frog")==="true");
+        .css("opacity", 100);
+      
+        //flashResult($(this).attr("data-frog") === "true");
+      
         if ($(this).attr("data-frog")==="true"){ //correct answer
           console.log("right");
           ansText.css("color", "green")
@@ -256,9 +241,8 @@ $(document).ready(function(){
   function quizDone(){
     clearInterval(timeInterval);
     quiz.empty();
-    initInput.val(""); //clear prev init
+    initInput.val(""); //clear prev initials
     showThis("#gameDone");
-    // show game over, grab initials
     $("#endScore").text(timer.theTime)
                   .css("font-weight", "bold"); 
   }
@@ -270,7 +254,6 @@ $(document).ready(function(){
   }
 
   //  EVENT LISTENERS
-
   $("#hiScoreLink").on("click", showHighScores);
   $("#start").on("click", playTheGame);
   $("#play").on("click", showInstructions);
@@ -280,16 +263,4 @@ $(document).ready(function(){
     addHighScore(timer.theTime, initInput.val());
     showHighScores();
   });
-
-
-
-
-
-
-
-
-
-
-
-
 });
