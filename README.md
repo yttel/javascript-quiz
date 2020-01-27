@@ -17,3 +17,6 @@ As you proceed in your career as a web developer, you will probably be asked to 
 
 ![During gameplay](./Assets/Images/quizQuest.PNG)
 
+![End of game](./Assets/Images/addScore.PNG)
+
+![High score list](./Assets/Images/HSlist.PNG)
