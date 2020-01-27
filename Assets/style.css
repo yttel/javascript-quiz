@@ -67,6 +67,10 @@ div.instructions{
   width: 100%;
 }
 
+li.answerText{
+  border: 2px solid #4aaaa5;
+}
+
 button.myButton{
   background-color: #4aaaa5;
   color: #ffffff;

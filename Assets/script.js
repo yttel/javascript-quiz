@@ -211,7 +211,7 @@ $(document).ready(function(){
       answerOptions.forEach(function(thisAns){
         //console.log(`thisAns: ${thisAns}`)
         quiz.append($("<li>")
-                    .addClass("answerText")
+                    .addClass("answerText fullWidth btn")
                     .text(thisAns)
                     .attr("data-frog", (singleQuest.correctAnswer === thisAns)));
       });
