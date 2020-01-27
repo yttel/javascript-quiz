@@ -76,6 +76,7 @@ li.answerText{
 }
 
 button.myButton{
+  align-items: center;
   background-color: #4aaaa5;
   color: #ffffff;
   border: none;
